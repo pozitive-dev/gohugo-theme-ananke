@@ -30,8 +30,11 @@
       </p>
       {{ end }}
       {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-      <time class="f6 mv4 dib tracked" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-        {{- .Date.Format "January 2, 2006" -}}
+      <time class="f6 mv4 dib tracked" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
+          {{block "polish date" .}}
+              {{ $polish_month := (index $.Site.Data.pl_months (printf "%d" .Date.Month)) }}
+              {{- printf "%02d %s %d" .Date.Day $polish_month .Date.Year -}}
+          {{end}}
       </time>
 
       {{/*
