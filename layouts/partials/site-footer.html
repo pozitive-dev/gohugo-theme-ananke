@@ -1,8 +1,16 @@
 <footer class="{{ .Site.Params.background_color_class | default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
+  <div class="ph3 f4 white-70 nested-link">
+    {{ with .Site.GetPage "/contact" }}{{ .Content | safeHTML }}{{ end }}
+  </div>
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="{{ .Site.BaseURL }}" >
-    &copy; {{ with .Site.Copyright | default .Site.Title }} {{ . | safeHTML }} {{ now.Format "2006"}} {{ end }}
-  </a>
-    <div>{{ partial "social-follow.html" . }}</div>
+    <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="{{ .Site.BaseURL }}" >
+      &copy; {{ with .Site.Copyright | default .Site.Title }} {{ . | safeHTML }} {{ now.Format "2006"}} {{ end }}
+    </a>
+  </div>
+  <div class="flex flex-wrap justify-around bg-light-gray mt2">
+    <img src="/images/ncbr-logo-pl.svg" alt="logo ncbr" class="h3 pa3"></img>
+    <img src="/images/feir-logo.svg" alt="logo fe ir" class="h3 pa3"></img>
+    <img src="/images/rp-logo.svg" alt="logo rp" class="h3 pa3"></img>
+    <img src="/images/efrr-logo.svg" alt="logo efrr" class="h3 pa3"></img>
   </div>
 </footer>
